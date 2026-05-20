@@ -1,0 +1,122 @@
+/* 1. Configuración General */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a1a1a; /* Fondo oscuro para que resalten los controles */
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden; /* Evita el scroll accidental durante la carrera */
+    user-select: none; /* Evita que se seleccione texto al tocar rápido los botones */
+}
+
+/* 2. Pantallas de Selección y Control */
+.pantalla {
+    display: none; /* Ocultas por defecto */
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 0.5s ease; /* Efecto suave al cambiar de pantalla */
+}
+
+.activa {
+    display: block; /* Solo se muestra la que tenga esta clase */
+}
+
+/* 3. Botones de Selección de Robot */
+.btn-robot {
+    padding: 30px;
+    margin: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 250px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#btn-rojo {
+    background: linear-gradient(145deg, #ff4757, #e84118);
+    color: white;
+    box-shadow: 0 5px 15px rgba(232, 65, 24, 0.4);
+}
+
+#btn-azul {
+    background: linear-gradient(145deg, #1e90ff, #0097e6);
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 151, 230, 0.4);
+}
+
+.btn-robot:active {
+    transform: scale(0.95);
+}
+
+/* 4. El Mando de Control (Joystick Digital) */
+.contenedor-controles {
+    display: grid;
+    grid-template-areas: 
+        ". arriba ."
+        "izq stop der"
+        ". abajo .";
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-dir {
+    width: 90px;
+    height: 90px;
+    font-size: 2rem;
+    border: none;
+    border-radius: 50%; /* Botones circulares */
+    background: #333;
+    color: white;
+    box-shadow: 0 4px #000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.1s;
+}
+
+/* Colores específicos para saber a quién manejas */
+.control-rojo .btn-dir { border: 3px solid #ff4757; }
+.control-azul .btn-dir { border: 3px solid #1e90ff; }
+
+.btn-dir:active {
+    background: #555;
+    transform: translateY(4px); /* Efecto de hundido al presionar */
+    box-shadow: 0 0 #000;
+}
+
+/* Asignación de áreas en el grid */
+.arriba { grid-area: arriba; }
+.izq    { grid-area: izq; }
+.der    { grid-area: der; }
+.abajo  { grid-area: abajo; }
+.stop   { 
+    grid-area: stop; 
+    background: #ff4757; 
+    font-size: 1rem; 
+    border-radius: 10px;
+}
+
+/* 5. Botón Volver */
+.btn-volver {
+    background: none;
+    border: 1px solid #777;
+    color: #777;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+/* Animación simple */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

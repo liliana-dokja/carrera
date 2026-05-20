@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<Este archivo es ahora mucho más limpio. Solohead>
+    <meta charset="UTF-8"> 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Carrera</title>
+    <!-- Vinculamos el CSS -->
+    <link rel="stylesheet" href="estilo/estilo1.css">
+</head>
+<body>
+
+    <!-- PANTALLA DE SELECCIÓN -->
+    <div id="pantalla-seleccion" class="pantalla activa">
+        <h1>Gran Carrera de Robots</h1>
+        <p>Selecciona tu robot:</p>
+        <button id="btn-rojo" class="btn-robot" onclick="conectarRobot('Robot_Rojo')">🏎️ Robot Rojo</button>
+        <button id="btn-<azul" class="btn-robot" onclick="conectarRobot('Robot_Azul')">🚙 Robot Azul</button>
+    </div>
+
+    <!-- PANTALLA DE CONTROL -->
+    <div id="pantalla-control" class="pantalla">
+        <button class="btn-volver" onclick="desconectarYVolver()">⬅️ Cambiar de Robot</button>
+        <h2 id="titulo-control">Conectando...</h2>
+        
+        <div id="pad-direccional" class="contenedor-controles">
+            <!-- Los botones envían una letra al presionar y 'S' al soltar -->
+            <button class="btn-dir arriba" 
+                    onmousedown="enviarLetra('F')" onmouseup="enviarLetra('S')"
+                    ontouchstart="enviarLetra('F')" ontouchend="enviarLetra('S')">▲</button>
+            
+            <button class="btn-dir izq" 
+                    onmousedown="enviarLetra('I')" onmouseup="enviarLetra('S')"
+                    ontouchstart="enviarLetra('I')" ontouchend="enviarLetra('S')">◀</button>
+            
+            <button class="btn-dir stop" onclick="enviarLetra('S')">STOP</button>
+            
+            <button class="btn-dir der" 
+                    onmousedown="enviarLetra('D')" onmouseup="enviarLetra('S')"
+                    ontouchstart="enviarLetra('D')" ontouchend="enviarLetra('S')">▶</button>
+            
+            <button class="btn-dir abajo" 
+                    onmousedown="enviarLetra('A')" onmouseup="enviarLetra('S')"
+                    ontouchstart="enviarLetra('A')" ontouchend="enviarLetra('S')">▼</button>
+        </div>
+    </div>
+
+    <!-- Vinculamos el JavaScript al final para que no trabe la carga de la página -->
+   <script src="codigo.js"></script>
+</script>
+</body>
+</html>
